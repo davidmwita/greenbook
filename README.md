@@ -1,3 +1,7 @@
+greenbook is Yelp, but for minorities. The webapp will host inclusivity reviews & ratings for locations such as malls, restaurants, etc...
+
+Dev:
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
