@@ -5,5 +5,7 @@ import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-    return <div className={styles.container}></div>;
+    return (<div className={styles.container}>
+        <h3>lala</h3>
+    </div>);
 }
