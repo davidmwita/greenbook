@@ -30,6 +30,13 @@ const firestore = {
         return reviews;
     },
 
+    // getReviews: async (name) => {
+    //     const locations = collection(db, "locations");
+    //     const snapshot = await getDocs(locations);
+    //     const rightLocation = snapshot.docs.find((doc) => doc.name === name);
+    //     return rightLocation.data();
+    // }
+
     //   placeOrder: async (order) => {
     //     await addDoc(collection(db, 'orders'), order);
     //   }

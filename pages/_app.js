@@ -3,11 +3,7 @@ import "../styles/globals.css";
 import "../styles/map.css";
 
 function MyApp({Component, pageProps}) {
-    return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
-    );
+    return <Component {...pageProps} />
 }
 
 export default MyApp;
