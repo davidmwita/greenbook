@@ -36,14 +36,13 @@ const options = {
 
 export default function Map() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyC63Jix2qjSi-XO22n0hBK2qAJ5epORgvo",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  // add markers when reviews given
-  // setMarkers...
+  // add markers when location is searched for
   const [markers, setMarkers] = React.useState([]);
   // set it for when a user clicks on a marker
-  // box appears with info
+  // box appears with info and link to review
   const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
@@ -51,35 +50,26 @@ export default function Map() {
     mapRef.current = map;
   }, []);
 
-  //use to pan to location on map when specific page opens
+  //use to pan to location on map when loc searched for
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
   });
 
-  const addMarker = (name, lat, lng) => {
+  const addMarker = (name, remainingAddress, lat, lng, locationTypes) => {
     setMarkers((crnt) => [
       ...crnt,
       {
         name: name,
+        address: remainingAddress,
         lat: lat,
         lng: lng,
-        time: new Date(),
+        types: locationTypes,
+        time: new Date()
       },
     ]);
   };
 
-  // const addressFromPlaceId = async (placeId) => {
-  //     const geocoder = new google.maps.Geocoder();
-  //     const { results } = await geocoder.geocode({ placeId })
-
-  //     if (results[0]) {
-  //         // const result = [results[0].name, results[0].formatted_address]
-  //         return results
-  //     }
-  //     else
-  //         return null
-  // }
 
   if (loadError) return "Error loading Maps";
   if (!isLoaded) return "Loading Map";
@@ -113,12 +103,15 @@ export default function Map() {
             }}
           >
             <div>
-              <h3>{selected.name}</h3>
+              <h4>{selected.name}</h4>
+              <p>{selected.address}</p>
+              {(selected.types.length > 0) ? (
+                  <p>Type: {selected.types.toString()} </p>
+                ): null }
+              {/* Link to location review page */}
               <Link href={`/locations/${selected.name}`}>
                 <a>View reviews here</a>
               </Link>
-              {/* {console.log(addressFromPlaceId(selected.placeId))} */}
-              {/** TODO: add location name */}
             </div>
           </InfoWindow>
         ) : null}
@@ -149,23 +142,31 @@ function Search({ panTo, addMarker }) {
           setValue(address, false);
           clearSuggestions();
 
-          const name = address.split(",")[0];
+          let addressArr = address.split(",")
+          const name = addressArr.shift();
+          const remainingAddress = addressArr.join(",")
 
           try {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
 
-            addMarker(name, lat, lng);
+            const healthTypes = ["health", "hospital", "doctor", "dentist", "pharmacy", "drugstore"]
+            let locationTypes = []
+
+            if (results[0].types) {
+              results[0].types.forEach(type => {
+                if (healthTypes.includes(type)) {
+                  locationTypes.push(type)
+                }
+              })
+
+              addMarker(name, remainingAddress, lat, lng, locationTypes);
+            }
 
             panTo({ lat, lng });
-            /** TODO:
-             * 1) pan to location on map
-             * 2) have marker pop up ONLY if types.includes(health)
-             * 3) have link to go to location page (pass in address)
-             * 4) firebase backend to display reviews etc for that page
-             */
+
           } catch (error) {
-            console.log("error!" + error);
+            console.log("error! " + error);
           }
         }}
       >
@@ -179,11 +180,11 @@ function Search({ panTo, addMarker }) {
           className="map-searchbar-input"
         />
 
-        <ComboboxPopover>
-          <ComboboxList>
+        <ComboboxPopover className="suggestions-box">
+          <ComboboxList className="suggestions-list">
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
+                <ComboboxOption className="withBorder" key={id} value={description} />
               ))}
           </ComboboxList>
         </ComboboxPopover>
