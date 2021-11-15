@@ -11,8 +11,9 @@ body {
     flex-direction: column;
     padding: 0px 0px 25px 0px;
     margin: 0;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
     background: linear-gradient(
         180deg,
         #ace0f9 0%,
@@ -49,7 +50,7 @@ a {
     font-family: Tenor Sans;
     font-size: 95px;
     margin: 0px;
-    padding: 40px 0px 0px 0px; 
+    padding: 40px 0px 0px 0px;
     text-align: center;
 }
 
@@ -57,7 +58,7 @@ a {
     text-align: center;
     font-weight: 500;
     font-size: 30px;
-    color: #4098A4;
+    color: #4098a4;
 }
 
 .login {
@@ -68,7 +69,7 @@ a {
     letter-spacing: 0em;
     text-align: center;
     padding: 0px 28px 0px 28px;
-    background: #ACE0F9;
+    background: #ace0f9;
     border-radius: 10px;
     color: white;
 }
@@ -105,7 +106,11 @@ footer {
 }
 
 .profile-header {
-    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px 90px;
+    height: 300px;
     left: 0px;
     top: 53px;
     border-radius: 0px;
@@ -114,4 +119,42 @@ footer {
         #4098a4 50.01%,
         rgba(174, 179, 180, 0.04) 100%
     );
+}
+.loc-name {
+    color: white;
+    font-family: DM Sans;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 68px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    border-radius: undefinedpx;
+}
+
+.tags button {
+    background: none;
+    border: 3px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: DM Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffffff;
+    margin: 0 15px;
+}
+
+.review-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 0.8px solid #4098a4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    max-width: 300px;
 }
