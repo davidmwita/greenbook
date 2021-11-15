@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 import { GoogleMap, 
     useLoadScript, 
     Marker, 
@@ -111,6 +112,9 @@ export default function Map() {
                         >
                             <div>
                                 <h3>{selected.name}</h3>
+                                <Link href={`/locations/${selected.name}`}>
+                                    <a>View reviews here</a>
+                                </Link>
                                 {/* {console.log(addressFromPlaceId(selected.placeId))} */}
                                 {/** TODO: add location name */}
                             </div>
@@ -153,7 +157,7 @@ function Search({ panTo, addMarker}) {
                         panTo({ lat, lng })
                         /** TODO: 
                          * 1) pan to location on map
-                         * 2) have marker pop up
+                         * 2) have marker pop up ONLY if types.includes(health)
                          * 3) have link to go to location page (pass in address)
                          * 4) firebase backend to display reviews etc for that page
                         */
