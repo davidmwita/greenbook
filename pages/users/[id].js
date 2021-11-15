@@ -1,7 +1,7 @@
 // /import firestore from '../../firebase'
 import Image from "next/image";
 
-const User = ({reviews}) => {
+const User = ({name, reviews, rating}) => {
     return (
         <div>
             <div className="profile-header">
