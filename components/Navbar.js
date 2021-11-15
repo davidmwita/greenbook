@@ -22,8 +22,8 @@ const Navbar = () => {
                     />
                 </div>
             </form>
-            <Link href="/login" className="login">
-                <a>Sign In</a>
+            <Link href="/login">
+                <a className="login">Sign In</a>
             </Link>
         </nav>
     );
