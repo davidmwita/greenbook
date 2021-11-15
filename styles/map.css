@@ -1,0 +1,19 @@
+.map-searchbar-input {
+    border-radius: 10px;
+    text-align: left;
+    font-family: DM Sans;
+    width: 320px;
+    padding: 10px;
+    border: 2px solid #4098A4;
+}
+
+.map-searchbar {
+    text-align: center;
+    padding: 20px;
+}
+
+.map {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
