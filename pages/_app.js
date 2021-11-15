@@ -1,12 +1,17 @@
 import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 import "../styles/map.css";
 
 function MyApp({Component, pageProps}) {
     return (
-        <Layout>
+        <>
+            <Navbar />
             <Component {...pageProps} />
-        </Layout>
+        </>
+        // <Layout>
+        //     <Component {...pageProps} />
+        // </Layout>
     );
 }
 
