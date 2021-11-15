@@ -12,7 +12,6 @@ export default function Layout({children, home}) {
 
             <header>{home ? <></> : <></>}</header>
             <Navbar />
-            {children}
 
             <main>{children}</main>
 

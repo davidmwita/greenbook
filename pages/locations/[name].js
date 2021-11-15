@@ -1,12 +1,7 @@
 import Layout from "../../components/Layout";
 
-export default function Location({ locationData }) {
-    return (
-        <Layout>
-
-
-        </Layout>
-    )
+export default function Location({locationData}) {
+    return <div></div>;
 }
 
 // // This gets called on every request
@@ -15,7 +10,7 @@ export default function Location({ locationData }) {
 //     const reviews = await firestore.getReviews()
 
 //     console.log(reviews)
-  
+
 //     // Pass data to the page via props
 //     return { props: { data } }
 //   }

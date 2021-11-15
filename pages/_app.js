@@ -5,13 +5,13 @@ import "../styles/map.css";
 
 function MyApp({Component, pageProps}) {
     return (
-        <>
-            <Navbar />
-            <Component {...pageProps} />
-        </>
-        // <Layout>
+        // <>
+        //     <Navbar />
         //     <Component {...pageProps} />
-        // </Layout>
+        // </>
+        <Layout>
+            <Component {...pageProps} />
+        </Layout>
     );
 }
 
